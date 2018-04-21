@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Police.gd" type="Script" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
+
+[node name="Police" type="Spatial" groups=[
+"Beat",
+]]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+speed = 0.5
+
+[node name="Model" parent="." index="0" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="SpotLight" type="SpotLight" parent="Model" index="2"]
+
+transform = Transform( -0.00324944, 0.211877, -0.977291, 0, 0.977296, 0.211878, 0.999995, 0.000688486, -0.00317567, 0.0491328, 0.341314, 0.000271267 )
+layers = 1
+light_color = Color( 1, 1, 1, 1 )
+light_energy = 16.0
+light_indirect_energy = 10.0
+light_negative = false
+light_specular = 0.5
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.15
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+spot_range = 2.76952
+spot_attenuation = 0.267946
+spot_angle = 38.4939
+spot_angle_attenuation = 61.8196
+_sections_unfolded = [ "Light", "Shadow", "Spot", "Transform" ]
+
+[node name="Tween" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 0
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+
