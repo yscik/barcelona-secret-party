@@ -7,7 +7,7 @@ path="res://.import/Player.dae-6f9fd074678cc287fea2c768bc4ee067.scn"
 [deps]
 
 source_file="res://assets/Player.dae"
-source_md5="9d3bc69909b9e1cdd10d79278db7a368"
+source_md5="8c819b7b17b378c3c2b8a556ddc6a613"
 
 dest_files=[ "res://.import/Player.dae-6f9fd074678cc287fea2c768bc4ee067.scn" ]
 dest_md5="40516b8c9efec2f2e1b3617fff301ebe"

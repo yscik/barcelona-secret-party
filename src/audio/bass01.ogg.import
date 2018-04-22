@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bass01.ogg-4fb3d775e5fd53efdff384782c8408ad.oggstr"
+
+[deps]
+
+source_file="res://audio/bass01.ogg"
+source_md5="c57a0b7e8a361c57b573a7f6caea3949"
+
+dest_files=[ "res://.import/bass01.ogg-4fb3d775e5fd53efdff384782c8408ad.oggstr" ]
+dest_md5="1c9e7d1011a1f209ff58c904fa7a5bf0"
+
+[params]
+
+loop=false
+loop_offset=0

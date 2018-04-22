@@ -6,9 +6,13 @@ enum direction { Up, Right, Down, Left }
 var dir = direction.Up
 
 export var speed = 0.5
+var grid = 3
 
+func at(p, g):
+	return int(round(p * 10)) % (g * 10) == 0
+	
 func at_corner():
-	return int(round(translation.x)) % 3 == 0 && int(round(translation.z)) % 3 == 0
+	return at(translation.x, grid) && at(translation.z, grid)
  	
 func _ready():
 	$Tween.start()
@@ -32,5 +36,5 @@ func move():
 
 func tween_prop(prop, value, obj = self):
 	$Tween.stop(obj, prop)	
-	$Tween.interpolate_property(obj, prop, obj[prop], value, Global.bpm, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(obj, prop, obj[prop], value, Global.bpm, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0)
 	

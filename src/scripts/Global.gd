@@ -1,3 +1,5 @@
 extends Node
 
-var bpm = 0.7
+var bpm = 1.72
+
+var player

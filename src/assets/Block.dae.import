@@ -2,15 +2,15 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Barcelona.dae-e1ee6046db67efd03208f92316216b57.scn"
+path="res://.import/Block.dae-9d6e31b037af5819453b0ed8c2a9de74.scn"
 
 [deps]
 
-source_file="res://assets/Barcelona.dae"
-source_md5="af812b5fd2c8ad73b6e06fe8a12970eb"
+source_file="res://assets/Block.dae"
+source_md5="d57dcf3ae7bef9dab0de25b60e70280a"
 
-dest_files=[ "res://.import/Barcelona.dae-e1ee6046db67efd03208f92316216b57.scn" ]
-dest_md5="e5896f130077bcec19bbf112c1b5fec8"
+dest_files=[ "res://.import/Block.dae-9d6e31b037af5819453b0ed8c2a9de74.scn" ]
+dest_md5="aa77447ade224fc6883a7b027fd161d8"
 
 [params]
 
@@ -20,12 +20,12 @@ nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
 materials/location=1
-materials/storage=1
+materials/storage=0
 materials/keep_on_reimport=false
 meshes/compress=true
 meshes/ensure_tangents=true
-meshes/storage=0
-meshes/light_baking=0
+meshes/storage=1
+meshes/light_baking=2
 meshes/lightmap_texel_size=0.1
 external_files/store_in_subdir=false
 animation/import=true

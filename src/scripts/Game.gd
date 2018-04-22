@@ -5,7 +5,10 @@ extends Node
 # var b = "textvar"
 
 func _ready():
-	$Timer.start()
+	$Beat.wait_time = Global.bpm
+	$Beat.start()
+	$Bass.play("Bass1", -1, 16.0 / Global.bpm)
+	$Bass/MusicBase.play()
 	pass
 
 #func _process(delta):

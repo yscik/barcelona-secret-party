@@ -2,15 +2,15 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Barcelona.dae-e1ee6046db67efd03208f92316216b57.scn"
+path="res://.import/Things.dae-006e4fa209639143826dd18690ac4cc1.scn"
 
 [deps]
 
-source_file="res://assets/Barcelona.dae"
-source_md5="af812b5fd2c8ad73b6e06fe8a12970eb"
+source_file="res://assets/Things.dae"
+source_md5="7b067c6b2ef12f42b09ad4750fe9abcf"
 
-dest_files=[ "res://.import/Barcelona.dae-e1ee6046db67efd03208f92316216b57.scn" ]
-dest_md5="e5896f130077bcec19bbf112c1b5fec8"
+dest_files=[ "res://.import/Things.dae-006e4fa209639143826dd18690ac4cc1.scn" ]
+dest_md5="b0ee7a6e246f41b2b3f15c47870f431c"
 
 [params]
 
@@ -21,7 +21,7 @@ nodes/custom_script=""
 nodes/storage=0
 materials/location=1
 materials/storage=1
-materials/keep_on_reimport=false
+materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0

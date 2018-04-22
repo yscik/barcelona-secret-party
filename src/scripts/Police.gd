@@ -25,4 +25,9 @@ func searchlight():
 	update_rot(light_dir * 25)
 
 func sees_player():
+	Global.player
 	pass
+	
+func toggle_flashlight():
+	$Model/Light.light_energy = 16
+	

@@ -1,11 +1,12 @@
-extends Timer
+extends Node
 
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
 
+export var group = "Beat";
+
 func _ready():
-	wait_time = Global.bpm
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
@@ -17,5 +18,5 @@ func _ready():
 
 
 func beat():
-	get_tree().call_group("Beat", "beat")
+	get_tree().call_group(group, group.to_lower())
 	pass # replace with function body

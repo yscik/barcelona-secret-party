@@ -1,7 +1,454 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/Player.dae" type="PackedScene" id=1]
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Ray.material" type="Material" id=2]
+[ext_resource path="res://PlayerModel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Ray.material" type="Material" id=4]
 
-[node name="Player" instance=ExtResource( 1 )]
+[sub_resource type="ArrayMesh" id=1]
+
+resource_name = "Plane.001"
+blend_shape_mode = 1
+custom_aabb = AABB( 0, 0, 0, 0, 0, 0 )
+surfaces/0 = {
+"aabb": AABB( -0.670455, -0.23036, -8.90845, 1.34091, 0.23037, 8.9098 ),
+"array_data": PoolByteArray( 8, 162, 0, 0, 121, 21, 0, 60, 0, 126, 253, 0, 8, 34, 0, 0, 121, 21, 0, 60, 0, 126, 253, 0, 93, 57, 95, 179, 116, 200, 0, 60, 0, 126, 253, 0, 93, 185, 95, 179, 116, 200, 0, 60, 0, 126, 253, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0 ),
+"blend_shape_data": [  ],
+"format": 98051,
+"index_count": 6,
+"material": ExtResource( 4 ),
+"name": "Ray",
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 4
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Ray"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ray:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.3, 1.7, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.76901e-15, -48.5655, -1.19225e-15 ), Vector3( 1.83337e-15, 16.6329, 4.58341e-16 ), Vector3( -1.9387e-15, -17.7446, -4.84676e-16 ), Vector3( 3.10679e-15, 29.2357, 7.76698e-16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ray2:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.6, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.84195e-15, 113.309, 1.46049e-15 ), Vector3( 1.03368e-15, 170.648, 2.58421e-16 ), Vector3( 6.19793e-15, 76.9943, -1.63107e-15 ), Vector3( 1.86249e-14, 102.583, 4.73263e-15 ), Vector3( 1.76722e-14, 67.828, -4.88843e-15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ray3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.6, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -5.33793e-15, -122.95, -1.33448e-15 ), Vector3( -3.29853e-15, -148.765, -8.24633e-16 ), Vector3( -6.2339e-15, -101.478, -1.55848e-15 ), Vector3( -5.16434e-15, -125.722, -1.29108e-15 ), Vector3( -4.98054e-15, -51.5331, -1.24514e-15 ), Vector3( -5.54202e-15, -119.398, -1.3855e-15 ), Vector3( -5.79362e-15, -114.386, -1.4484e-15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ray4:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.5, 1.9, 2.1, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.61675e-16, 173.123, 1.90419e-16 ), Vector3( 6.31079e-15, 97.2117, 1.5777e-15 ), Vector3( 5.0932e-15, 126.805, 1.2733e-15 ), Vector3( 6.0053e-15, 70.7457, -4.85979e-15 ), Vector3( 4.8173e-15, 130.773, 1.20432e-15 ), Vector3( 2.94176e-15, 152.454, 7.3544e-16 ), Vector3( 5.13448e-15, 126.18, 1.28362e-15 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "Ray"
+length = 3.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Ray:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.3, 1.7, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -4.76901e-15, -48.5655, -1.19225e-15 ), Vector3( 1.83337e-15, 16.6329, 4.58341e-16 ), Vector3( -1.9387e-15, -17.7446, -4.84676e-16 ), Vector3( 3.10679e-15, 29.2357, 7.76698e-16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Ray2:rotation_degrees")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.6, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.84195e-15, 113.309, 1.46049e-15 ), Vector3( 1.03368e-15, 170.648, 2.58421e-16 ), Vector3( 6.19793e-15, 76.9943, -1.63107e-15 ), Vector3( 1.86249e-14, 102.583, 4.73263e-15 ), Vector3( 1.76722e-14, 67.828, -4.88843e-15 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ray3:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1.1, 1.6, 2.2, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -5.33793e-15, -122.95, -1.33448e-15 ), Vector3( -3.29853e-15, -148.765, -8.24633e-16 ), Vector3( -6.2339e-15, -101.478, -1.55848e-15 ), Vector3( -5.16434e-15, -125.722, -1.29108e-15 ), Vector3( -4.98054e-15, -51.5331, -1.24514e-15 ), Vector3( -5.54202e-15, -119.398, -1.3855e-15 ), Vector3( -5.79362e-15, -114.386, -1.4484e-15 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Ray4:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6, 1.1, 1.5, 1.9, 2.1, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.61675e-16, 173.123, 1.90419e-16 ), Vector3( 6.31079e-15, 97.2117, 1.5777e-15 ), Vector3( 5.0932e-15, 126.805, 1.2733e-15 ), Vector3( 6.0053e-15, 70.7457, -4.85979e-15 ), Vector3( 4.8173e-15, 130.773, 1.20432e-15 ), Vector3( 2.94176e-15, 152.454, 7.3544e-16 ), Vector3( 5.13448e-15, 126.18, 1.28362e-15 ) ]
+}
+
+[sub_resource type="SphereShape" id=3]
+
+radius = 0.175249
+
+[node name="Player" type="Spatial" index="0" groups=[
+"Beat",
+]]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+speed = 0.5
+colors = [ Color( 0.891663, 0.445312, 1, 1 ), Color( 0.539062, 1, 0.589478, 1 ), Color( 1, 0.511719, 0.694824, 1 ), Color( 1, 0.67627, 0.390625, 1 ), Color( 0.503906, 1, 0.883728, 1 ) ]
+raymat = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="." index="0"]
+
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.9857e-11, 6.31757, -0.0013814 )
+keep_aspect = 1
+cull_mask = 1048575
+environment = null
+h_offset = 0.0
+v_offset = 0.0
+doppler_tracking = 0
+projection = 0
+current = true
+fov = 70.0
+size = 1.0
+near = 0.05
+far = 100.0
+_sections_unfolded = [ "Transform" ]
+
+[node name="Model" parent="." index="1" instance=ExtResource( 3 )]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="Tween" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 0
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="Light" type="OmniLight" parent="." index="3"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64907, 0 )
+layers = 1
+light_color = Color( 0.933594, 0.933594, 0.933594, 1 )
+light_energy = 1.0
+light_indirect_energy = 16.0
+light_negative = false
+light_specular = 0.2
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 1.0
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 7.0
+omni_attenuation = 0.870551
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Light2" type="OmniLight" parent="." index="4"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.517771, 0 )
+visible = false
+layers = 1
+light_color = Color( 0.529297, 1, 0.0585938, 1 )
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_negative = false
+light_specular = 1.0
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.5
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 7.0
+omni_attenuation = 0.870551
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Light", "Omni", "Shadow" ]
+
+[node name="Light3" type="OmniLight" parent="." index="5"]
+
+transform = Transform( 0.991528, 0.0337693, -0.125427, 0, 0.965615, 0.259977, 0.129894, -0.257774, 0.957434, 0, 0.445516, 0 )
+layers = 1
+light_color = Color( 0.930374, 0.941406, 0.919342, 1 )
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_negative = false
+light_specular = 1.0
+light_bake_mode = 1
+light_cull_mask = -1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_bias = 0.5
+shadow_contact = 0.0
+shadow_reverse_cull_face = false
+editor_only = false
+omni_range = 5.0
+omni_attenuation = 1.0
+omni_shadow_mode = 1
+omni_shadow_detail = 1
+_sections_unfolded = [ "Editor", "Light", "Omni", "Shadow", "Spot" ]
+
+[node name="Effects" type="Spatial" parent="." index="6"]
+
+transform = Transform( 0.987401, -0.158238, -1.49012e-08, 0.158238, 0.987401, -1.49012e-08, 1.70713e-08, 1.23555e-08, 1, 9.31323e-10, -0.243835, -7.45058e-09 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Rays" type="Spatial" parent="Effects" index="0"]
+
+transform = Transform( 0.98543, 0.170081, 0, -0.170081, 0.98543, 1.58819e-22, 2.7012e-23, -1.56505e-22, 1, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray" type="MeshInstance" parent="Effects/Rays" index="0"]
+
+transform = Transform( 0.931118, 2.20043e-17, -0.364717, -9.20688e-18, 1, 3.68275e-17, 0.364717, -3.09329e-17, 0.931118, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Geometry", "Transform", "material" ]
+
+[node name="Ray2" type="MeshInstance" parent="Effects/Rays" index="1"]
+
+transform = Transform( -0.603914, 7.92848e-17, 0.797049, 2.20017e-17, 1, -8.28025e-17, -0.797049, -3.24692e-17, -0.603914, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="Ray3" type="MeshInstance" parent="Effects/Rays" index="2"]
+
+transform = Transform( -0.767835, 3.11546e-17, -0.640647, -1.73587e-17, 1, 6.9435e-17, 0.640647, 6.44355e-17, -0.767835, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="Ray4" type="MeshInstance" parent="Effects/Rays" index="3"]
+
+transform = Transform( -0.846371, 3.39179e-17, 0.532592, 1.13943e-17, 1, -4.55771e-17, -0.532592, -3.25067e-17, -0.846371, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="Anim" type="AnimationPlayer" parent="Effects/Rays" index="4"]
+
+root_node = NodePath("..")
+autoplay = "Ray"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Ray = SubResource( 2 )
+blend_times = [  ]
+
+[node name="Rays2" type="Spatial" parent="Effects" index="1"]
+
+transform = Transform( 0.144801, 0.217593, -0.965239, 0.0254657, 0.974377, 0.223474, 0.989133, -0.0569398, 0.13555, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray" type="MeshInstance" parent="Effects/Rays2" index="0"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Ray2" type="MeshInstance" parent="Effects/Rays2" index="1"]
+
+transform = Transform( -0.395685, 1.03726e-16, 0.918386, 2.54903e-17, 1, -1.01961e-16, -0.918386, -1.69346e-17, -0.395685, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="Ray3" type="MeshInstance" parent="Effects/Rays2" index="2"]
+
+transform = Transform( -0.5439, 6.55109e-17, -0.83915, -2.32911e-17, 1, 9.31644e-17, 0.83915, 7.02168e-17, -0.5439, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "material" ]
+
+[node name="Ray4" type="MeshInstance" parent="Effects/Rays2" index="3"]
+
+transform = Transform( -0.992805, 4.89131e-18, 0.119739, 3.32344e-18, 1, -1.32937e-17, -0.119739, -1.28002e-17, -0.992805, 7.28354e-10, 0.445516, 8.11875e-10 )
+layers = 1
+material_override = null
+cast_shadow = 1
+extra_cull_margin = 0.0
+use_in_baked_light = true
+lod_min_distance = 0.0
+lod_min_hysteresis = 0.0
+lod_max_distance = 0.0
+lod_max_hysteresis = 0.0
+mesh = SubResource( 1 )
+skeleton = NodePath("..")
+material/0 = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Anim" type="AnimationPlayer" parent="Effects/Rays2" index="4"]
+
+root_node = NodePath("..")
+autoplay = "Ray"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Ray = SubResource( 4 )
+blend_times = [  ]
+
+[node name="Area" type="Area" parent="." index="7"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 1
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+
+shape = SubResource( 3 )
+disabled = false
+
+[connection signal="area_entered" from="Area" to="." method="busted"]
 
 
