@@ -7,10 +7,10 @@ path="res://.import/Player.dae-6f9fd074678cc287fea2c768bc4ee067.scn"
 [deps]
 
 source_file="res://assets/Player.dae"
-source_md5="8c819b7b17b378c3c2b8a556ddc6a613"
+source_md5="c7876814bac8c96dc3f08561aa840cd4"
 
 dest_files=[ "res://.import/Player.dae-6f9fd074678cc287fea2c768bc4ee067.scn" ]
-dest_md5="40516b8c9efec2f2e1b3617fff301ebe"
+dest_md5="c576b7032877e2e9a6b6eaa7a647e431"
 
 [params]
 
@@ -29,7 +29,7 @@ meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 external_files/store_in_subdir=false
 animation/import=true
-animation/fps=15
+animation/fps=24.0
 animation/filter_script=""
 animation/storage=false
 animation/keep_custom_tracks=false

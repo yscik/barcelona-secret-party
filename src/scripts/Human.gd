@@ -1,11 +1,11 @@
 extends Spatial
 
 var z = Vector3(0,1,0)
-enum direction { Up, Right, Down, Left }
+enum direction { Right, Up, Left, Down }
 
-var dir = direction.Up
+var dir = direction.Left
 
-export var speed = 0.5
+export var speed = 0.5 
 var grid = 3
 
 func at(p, g):
@@ -13,15 +13,18 @@ func at(p, g):
 	
 func at_corner():
 	return at(translation.x, grid) && at(translation.z, grid)
+
+func in_house():
+	return at(translation.x, grid) && at(translation.z, grid)
+
+func at_door():
+	return at(translation.x, grid + 1.5) && at(translation.z, grid + 1.5)
  	
 func _ready():
 	$Tween.start()
 	pass
 
 
-func turn():
-	dir = (dir + 1) % 4
-	update_rot()
 	
 func update_rot(diff = 0):
 	
@@ -36,5 +39,5 @@ func move():
 
 func tween_prop(prop, value, obj = self):
 	$Tween.stop(obj, prop)	
-	$Tween.interpolate_property(obj, prop, obj[prop], value, Global.bpm, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(obj, prop, obj[prop], value, Global.bpm, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	

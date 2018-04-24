@@ -1,54 +1,84 @@
 extends "res://scripts/Human.gd"
 
+signal busted
+
 var black = Color(0, 0, 0, 0)
-export (Array, Color) var colors
-export (ShaderMaterial) var raymat
-var turning = false
+
+var turning = null
+var input = {
+	ui_up = direction.Up,	
+	ui_down = direction.Down,	
+	ui_left = direction.Left,	
+	ui_right = direction.Right,	
+}
 
 func _ready():
 	Global.player = self
 
-func _unhandled_key_input(key):
-	if key.pressed && key.scancode == KEY_SPACE:
-		turning = true
+func _process(dt):
 	
+	for action in input:
+		if Input.is_action_pressed(action):
+			turning = input[action]
+		
 func beat():
-	if turning:
-		turn()
-		if !at_corner():
-			turn()
-	else:
+	
+	if turned_back:
 		move()
-
-	turning = false		
-	flash()
+		turned_back = false
+	
+	elif !hits_wall():
+		control()
+	
+	
+	$Model/Character.animate()
 		
 	pass
+	
+func control():
+	if turning != null && turning != dir:
+		dir = turning
+		update_rot()
+		dance_rot = 0
+	else:
+		dance()
 
-func flash():
-	
-	var color = colors[rand_range(0, colors.size() - 1)]
-#	$Light.light_color = color
-#	$Light/Anim.play("Flash")
-#	$Tween.interpolate_property($Light, "light_color", color, black, Global.bpm / 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0)
-#	$Tween.interpolate_property($Light2, "light_color", color, black, Global.bpm / 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0)
-#	$Tween.interpolate_property($Light3, "light_color", color, black, Global.bpm / 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0)
+	move()
 
-#	$Effects/Rays/Anim.playback_active = true
+	turning = null
 	
-	$Tween.interpolate_method(self, "set_color", color, black, Global.bpm / 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT, 0)
-	yield($Tween, "tween_completed")
 
+var turned_back = false
+
+func hits_wall():
+	
+	if !turned_back && check_walls():
+		turned_back = true
+		turn_back()
+		return true
+	return false
+		
+func check_walls():
+	var areas = $Area.get_overlapping_areas()
+	for area in areas:
+		if area.get_collision_layer_bit(2):
+			return true
+	return false
 	
 	
-func set_color(color):
-	$Light.light_color = color
-	$Light2.light_color = color
-	$Light3.light_color = color
-	raymat.set_shader_param("color", color)
-	$Effects
+func turn_back():
+	dir = dir + 2 % 4
+	update_rot()
 	
 
 func busted(area):
-	print("busted")
-	pass # replace with function body
+	$"..".end()
+
+
+var dance_rot = 0
+
+func dance():
+	
+	dance_rot = dance_rot + (1 if randf() > 0.5 else -1)
+	
+	update_rot(dance_rot * 25)

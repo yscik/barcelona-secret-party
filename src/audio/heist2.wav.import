@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/heist2.wav-923fc70b743310acc42f03726e9f8caf.sample"
+
+[deps]
+
+source_file="res://audio/heist2.wav"
+source_md5="592a9d20c6317aa86191534b70db2bc3"
+
+dest_files=[ "res://.import/heist2.wav-923fc70b743310acc42f03726e9f8caf.sample" ]
+dest_md5="a42ba80b397da1b58848791ab542506e"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

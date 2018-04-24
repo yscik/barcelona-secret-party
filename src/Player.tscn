@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Ray.material" type="Material" id=2]
-[ext_resource path="res://PlayerModel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PlayerModel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/Character.gd" type="Script" id=3]
 [ext_resource path="res://assets/Ray.material" type="Material" id=4]
+[ext_resource path="res://Ray.material" type="Material" id=5]
 
 [sub_resource type="ArrayMesh" id=1]
 
@@ -80,7 +81,7 @@ tracks/3/keys = {
 "values": [ Vector3( 7.61675e-16, 173.123, 1.90419e-16 ), Vector3( 6.31079e-15, 97.2117, 1.5777e-15 ), Vector3( 5.0932e-15, 126.805, 1.2733e-15 ), Vector3( 6.0053e-15, 70.7457, -4.85979e-15 ), Vector3( 4.8173e-15, 130.773, 1.20432e-15 ), Vector3( 2.94176e-15, 152.454, 7.3544e-16 ), Vector3( 5.13448e-15, 126.18, 1.28362e-15 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource_name = "Ray"
 length = 3.0
@@ -135,23 +136,21 @@ tracks/3/keys = {
 "values": [ Vector3( 7.61675e-16, 173.123, 1.90419e-16 ), Vector3( 6.31079e-15, 97.2117, 1.5777e-15 ), Vector3( 5.0932e-15, 126.805, 1.2733e-15 ), Vector3( 6.0053e-15, 70.7457, -4.85979e-15 ), Vector3( 4.8173e-15, 130.773, 1.20432e-15 ), Vector3( 2.94176e-15, 152.454, 7.3544e-16 ), Vector3( 5.13448e-15, 126.18, 1.28362e-15 ) ]
 }
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape" id=4]
 
-radius = 0.175249
+radius = 0.151356
 
-[node name="Player" type="Spatial" index="0" groups=[
+[node name="Player" type="Spatial" groups=[
 "Beat",
 ]]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 speed = 0.5
-colors = [ Color( 0.891663, 0.445312, 1, 1 ), Color( 0.539062, 1, 0.589478, 1 ), Color( 1, 0.511719, 0.694824, 1 ), Color( 1, 0.67627, 0.390625, 1 ), Color( 0.503906, 1, 0.883728, 1 ) ]
-raymat = ExtResource( 2 )
 
 [node name="Camera" type="Camera" parent="." index="0"]
 
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.9857e-11, 6.31757, -0.0013814 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.9857e-11, 34.8728, -0.00138265 )
 keep_aspect = 1
 cull_mask = 1048575
 environment = null
@@ -160,15 +159,22 @@ v_offset = 0.0
 doppler_tracking = 0
 projection = 0
 current = true
-fov = 70.0
+fov = 10.0
 size = 1.0
 near = 0.05
 far = 100.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="Model" parent="." index="1" instance=ExtResource( 3 )]
+[node name="Model" type="Spatial" parent="." index="1"]
 
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0209505, 0 )
+
+[node name="Character" parent="Model" index="0" instance=ExtResource( 2 )]
+
+transform = Transform( -3.15591e-08, 0, 0.11186, 0, 0.11186, 0, -0.11186, 0, -3.15591e-08, 0, 0.389685, 0 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
+anim_count = 14
 
 [node name="Tween" type="Tween" parent="." index="2"]
 
@@ -182,6 +188,7 @@ playback/speed = 1.0
 [node name="Light" type="OmniLight" parent="." index="3"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64907, 0 )
+visible = false
 layers = 1
 light_color = Color( 0.933594, 0.933594, 0.933594, 1 )
 light_energy = 1.0
@@ -190,7 +197,7 @@ light_negative = false
 light_specular = 0.2
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = true
+shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 1.0
 shadow_contact = 0.0
@@ -214,7 +221,7 @@ light_negative = false
 light_specular = 1.0
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = true
+shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.5
 shadow_contact = 0.0
@@ -229,6 +236,7 @@ _sections_unfolded = [ "Light", "Omni", "Shadow" ]
 [node name="Light3" type="OmniLight" parent="." index="5"]
 
 transform = Transform( 0.991528, 0.0337693, -0.125427, 0, 0.965615, 0.259977, 0.129894, -0.257774, 0.957434, 0, 0.445516, 0 )
+visible = false
 layers = 1
 light_color = Color( 0.930374, 0.941406, 0.919342, 1 )
 light_energy = 16.0
@@ -237,7 +245,7 @@ light_negative = false
 light_specular = 1.0
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = true
+shadow_enabled = false
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.5
 shadow_contact = 0.0
@@ -252,6 +260,7 @@ _sections_unfolded = [ "Editor", "Light", "Omni", "Shadow", "Spot" ]
 [node name="Effects" type="Spatial" parent="." index="6"]
 
 transform = Transform( 0.987401, -0.158238, -1.49012e-08, 0.158238, 0.987401, -1.49012e-08, 1.70713e-08, 1.23555e-08, 1, 9.31323e-10, -0.243835, -7.45058e-09 )
+visible = false
 _sections_unfolded = [ "Visibility" ]
 
 [node name="Rays" type="Spatial" parent="Effects" index="0"]
@@ -273,7 +282,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Geometry", "Transform", "material" ]
 
 [node name="Ray2" type="MeshInstance" parent="Effects/Rays" index="1"]
@@ -290,7 +299,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Ray3" type="MeshInstance" parent="Effects/Rays" index="2"]
@@ -307,7 +316,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Ray4" type="MeshInstance" parent="Effects/Rays" index="3"]
@@ -324,7 +333,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Anim" type="AnimationPlayer" parent="Effects/Rays" index="4"]
@@ -356,7 +365,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Ray2" type="MeshInstance" parent="Effects/Rays2" index="1"]
@@ -373,7 +382,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Ray3" type="MeshInstance" parent="Effects/Rays2" index="2"]
@@ -390,7 +399,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "material" ]
 
 [node name="Ray4" type="MeshInstance" parent="Effects/Rays2" index="3"]
@@ -407,7 +416,7 @@ lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
 mesh = SubResource( 1 )
 skeleton = NodePath("..")
-material/0 = ExtResource( 2 )
+material/0 = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Anim" type="AnimationPlayer" parent="Effects/Rays2" index="4"]
@@ -417,7 +426,7 @@ autoplay = "Ray"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/Ray = SubResource( 4 )
+anims/Ray = SubResource( 3 )
 blend_times = [  ]
 
 [node name="Area" type="Area" parent="." index="7"]
@@ -435,7 +444,7 @@ priority = 0.0
 monitoring = true
 monitorable = true
 collision_layer = 1
-collision_mask = 0
+collision_mask = 2
 audio_bus_override = false
 audio_bus_name = "Master"
 reverb_bus_enable = false
@@ -446,9 +455,38 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 disabled = false
 
-[connection signal="area_entered" from="Area" to="." method="busted"]
+[node name="Caught" type="Area" parent="." index="8"]
+
+input_ray_pickable = false
+input_capture_on_drag = false
+space_override = 0
+gravity_point = false
+gravity_distance_scale = 0.0
+gravity_vec = Vector3( 0, -1, 0 )
+gravity = 9.8
+linear_damp = 0.1
+angular_damp = 1.0
+priority = 0.0
+monitoring = true
+monitorable = true
+collision_layer = 0
+collision_mask = 2
+audio_bus_override = false
+audio_bus_name = "Master"
+reverb_bus_enable = false
+reverb_bus_name = "Master"
+reverb_bus_amount = 0.0
+reverb_bus_uniformity = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape" type="CollisionShape" parent="Caught" index="0"]
+
+shape = SubResource( 4 )
+disabled = false
+
+[connection signal="area_entered" from="Caught" to="." method="busted"]
 
 

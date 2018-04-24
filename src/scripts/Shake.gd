@@ -4,8 +4,8 @@ func _ready():
 	$Tween.start()
 	pass
 
-func bass():
-	$Tween.interpolate_method(self, "set_scale", 0, 1.5, 0.3, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0)
+func beat():
+	$Tween.interpolate_method(self, "set_scale", 0, 2.0, Global.bpm/2, Tween.TRANS_BOUNCE, Tween.EASE_OUT, 0)
 	yield($Tween, "tween_completed")
 	set_scale(0)
 	

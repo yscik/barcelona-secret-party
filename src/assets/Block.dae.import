@@ -7,10 +7,10 @@ path="res://.import/Block.dae-9d6e31b037af5819453b0ed8c2a9de74.scn"
 [deps]
 
 source_file="res://assets/Block.dae"
-source_md5="d57dcf3ae7bef9dab0de25b60e70280a"
+source_md5="942577b11ae9ac2267cdc7d76c948963"
 
 dest_files=[ "res://.import/Block.dae-9d6e31b037af5819453b0ed8c2a9de74.scn" ]
-dest_md5="aa77447ade224fc6883a7b027fd161d8"
+dest_md5="2a3f00461c8ec3a9291fff5ccf334f59"
 
 [params]
 
@@ -19,9 +19,9 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-materials/location=1
-materials/storage=0
-materials/keep_on_reimport=false
+materials/location=0
+materials/storage=1
+materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=1
