@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Resume.png-131e4e8524c4dab940c0defa4bb2d4be.stex"
+path="res://.import/Restart_hover.png-309b4424371adc228002f08097465e9e.stex"
 
 [deps]
 
-source_file="res://ui/Resume.png"
-source_md5="85996c13297f6f8f3612f4f2b533c7f6"
+source_file="res://ui/Restart_hover.png"
+source_md5="322776a143414e259ba60e13f4fe0842"
 
-dest_files=[ "res://.import/Resume.png-131e4e8524c4dab940c0defa4bb2d4be.stex" ]
-dest_md5="74da0ab704df325717bf86f196f8841e"
+dest_files=[ "res://.import/Restart_hover.png-309b4424371adc228002f08097465e9e.stex" ]
+dest_md5="92c29ebb83aa29d26242f7f39b91eaa1"
 
 [params]
 

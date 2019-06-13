@@ -134,7 +134,7 @@ tracks/3/keys = {
 "values": [ Vector3( 7.61675e-16, 173.123, 1.90419e-16 ), Vector3( 6.31079e-15, 97.2117, 1.5777e-15 ), Vector3( 5.0932e-15, 126.805, 1.2733e-15 ), Vector3( 6.0053e-15, 70.7457, -4.85979e-15 ), Vector3( 4.8173e-15, 130.773, 1.20432e-15 ), Vector3( 2.94176e-15, 152.454, 7.3544e-16 ), Vector3( 5.13448e-15, 126.18, 1.28362e-15 ) ]
 }
 
-[node name="HousePary" type="Spatial" index="0" groups=[
+[node name="HousePary" type="Spatial" groups=[
 "Beat",
 ]]
 

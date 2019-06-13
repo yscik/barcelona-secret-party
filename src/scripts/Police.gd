@@ -29,8 +29,11 @@ func searchlight():
 
 func get_turn():
 	var distance = Global.player.translation - self.translation
-
-	if distance.length() > 6:
+	var sees_player = distance.length() < 6
+	
+	$Model/Light.visible = sees_player
+	
+	if !sees_player:
 		return random_turn()
 		
 	elif abs(distance.x) > abs(distance.z):

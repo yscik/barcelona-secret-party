@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Beat.gd" type="Script" id=2]
@@ -9,16 +9,21 @@
 [ext_resource path="res://Police.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/blast.shader" type="Shader" id=8]
 [ext_resource path="res://scripts/Shake.gd" type="Script" id=9]
-[ext_resource path="res://Map.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Env.tres" type="Environment" id=11]
+[ext_resource path="res://Env.tres" type="Environment" id=10]
+[ext_resource path="res://scripts/Grid.gd" type="Script" id=11]
 [ext_resource path="res://ui/Busted.png" type="Texture" id=12]
-[ext_resource path="res://ui/Busted_Quit.png" type="Texture" id=13]
-[ext_resource path="res://ui/Busted_Quit_hover.png" type="Texture" id=14]
-[ext_resource path="res://ui/Busted_Restart.png" type="Texture" id=15]
-[ext_resource path="res://ui/Busted_Restart_hover.png" type="Texture" id=16]
-[ext_resource path="res://ui/Resume.png" type="Texture" id=17]
-[ext_resource path="res://ui/Resume_hover.png" type="Texture" id=18]
-[ext_resource path="res://scripts/PoliceSpawn.gd" type="Script" id=19]
+[ext_resource path="res://ui/Quit.png" type="Texture" id=13]
+[ext_resource path="res://ui/Quit_hover.png" type="Texture" id=14]
+[ext_resource path="res://ui/Restart.png" type="Texture" id=15]
+[ext_resource path="res://ui/Restart_hover.png" type="Texture" id=16]
+[ext_resource path="res://ui/Title.png" type="Texture" id=17]
+[ext_resource path="res://ui/Resume.png" type="Texture" id=18]
+[ext_resource path="res://ui/Resume_hover.png" type="Texture" id=19]
+[ext_resource path="res://ui/Start.png" type="Texture" id=20]
+[ext_resource path="res://ui/Start_hover.png" type="Texture" id=21]
+[ext_resource path="res://scripts/PoliceSpawn.gd" type="Script" id=22]
+[ext_resource path="res://HouseParty.tscn" type="PackedScene" id=23]
+[ext_resource path="res://ui/Button.png" type="Texture" id=24]
 
 [sub_resource type="Animation" id=1]
 
@@ -54,7 +59,7 @@ tracks/0/keys = {
 
 render_priority = 0
 shader = ExtResource( 8 )
-shader_param/scale = 0.0
+shader_param/scale = 0.1
 _sections_unfolded = [ "shader_param" ]
 
 [node name="Game" type="Node" index="0"]
@@ -72,6 +77,7 @@ group = "Beat"
 
 [node name="Bass" type="AnimationPlayer" parent="." index="1"]
 
+editor/display_folded = true
 root_node = NodePath("..")
 autoplay = ""
 playback_process_mode = 1
@@ -206,107 +212,115 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="Map" parent="." index="15" instance=ExtResource( 10 )]
+[node name="World" type="WorldEnvironment" parent="." index="15"]
+
+environment = ExtResource( 10 )
+
+[node name="Map" type="Spatial" parent="." index="16" groups=[
+"Beat",
+]]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 1.5 )
+script = ExtResource( 11 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="World" type="WorldEnvironment" parent="." index="16"]
-
-environment = ExtResource( 11 )
-
-[node name="DirectionalLight" type="OmniLight" parent="." index="17"]
+[node name="AmbientLight" type="Spatial" parent="." index="17"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -18 )
+
+[node name="DirectionalLight" type="OmniLight" parent="AmbientLight" index="0"]
+
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 layers = 1
 light_color = Color( 1, 0.934723, 0.636719, 1 )
 light_energy = 0.2
-light_indirect_energy = 1.0
+light_indirect_energy = 0.1
 light_negative = false
 light_specular = 0.0
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = false
+shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 64.8052
-omni_attenuation = 0.00552428
+omni_range = 114.0
+omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni", "Shadow" ]
 
-[node name="DirectionalLight3" type="OmniLight" parent="." index="18"]
+[node name="DirectionalLight3" type="OmniLight" parent="AmbientLight" index="1"]
 
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, 11 )
+transform = Transform( 1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 29, 0, 29 )
 layers = 1
 light_color = Color( 1, 0.934723, 0.636719, 1 )
 light_energy = 0.2
-light_indirect_energy = 1.0
+light_indirect_energy = 0.1
 light_negative = false
 light_specular = 0.0
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = false
+shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 64.8052
-omni_attenuation = 0.00552428
+omni_range = 114.0
+omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni", "Shadow" ]
 
-[node name="DirectionalLight2" type="OmniLight" parent="." index="19"]
+[node name="DirectionalLight2" type="OmniLight" parent="AmbientLight" index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 1, -18 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 58, 0, 0 )
 layers = 1
 light_color = Color( 1, 0.934723, 0.636719, 1 )
 light_energy = 0.2
-light_indirect_energy = 1.0
+light_indirect_energy = 0.1
 light_negative = false
 light_specular = 0.0
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = false
+shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 64.8052
-omni_attenuation = 0.00552428
+omni_range = 114.0
+omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni", "Shadow" ]
 
-[node name="DirectionalLight4" type="OmniLight" parent="." index="20"]
+[node name="DirectionalLight4" type="OmniLight" parent="AmbientLight" index="3"]
 
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1, -47 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 29, 0, -29 )
 layers = 1
 light_color = Color( 1, 0.934723, 0.636719, 1 )
 light_energy = 0.2
-light_indirect_energy = 1.0
+light_indirect_energy = 0.1
 light_negative = false
 light_specular = 0.0
 light_bake_mode = 1
 light_cull_mask = -1
-shadow_enabled = false
+shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_bias = 0.1
 shadow_contact = 0.0
 shadow_reverse_cull_face = false
 editor_only = false
-omni_range = 64.8052
-omni_attenuation = 0.00552428
+omni_range = 114.0
+omni_attenuation = 1.0
 omni_shadow_mode = 1
 omni_shadow_detail = 1
 _sections_unfolded = [ "Light", "Omni", "Shadow" ]
 
-[node name="Busted" type="ViewportContainer" parent="." index="21"]
+[node name="Busted" type="ViewportContainer" parent="." index="18"]
 
 editor/display_folded = true
 visible = false
@@ -323,37 +337,39 @@ size_flags_vertical = 1
 stretch = false
 stretch_shrink = 1
 
-[node name="Busted" type="TextureRect" parent="Busted" index="0"]
+[node name="Busted" type="TextureButton" parent="Busted" index="0"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -236.0
-margin_top = -268.0
-margin_right = 236.0
-margin_bottom = -12.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 667.0
+margin_bottom = 371.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
+focus_mode = 2
 mouse_filter = 1
-mouse_default_cursor_shape = 0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 12 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 12 )
 expand = true
 stretch_mode = 5
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Mouse", "Textures" ]
 
-[node name="Busted_Quit" type="TextureButton" parent="Busted" index="1"]
+[node name="Quit" type="TextureButton" parent="Busted" index="1"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -137.0
-margin_top = 152.0
-margin_right = 136.0
-margin_bottom = 267.0
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -151.0
+margin_right = 650.0
+margin_bottom = -20.0
 rect_pivot_offset = Vector2( 1074.92, 318.931 )
 rect_clip_content = false
 focus_mode = 2
@@ -372,16 +388,15 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Mouse", "Textures" ]
 
-[node name="Busted_Restart" type="TextureButton" parent="Busted" index="2"]
+[node name="Restart" type="TextureButton" parent="Busted" index="2"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -139.0
-margin_top = 20.0
-margin_right = 138.0
-margin_bottom = 140.0
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -264.0
+margin_right = 647.0
+margin_bottom = -140.0
 rect_pivot_offset = Vector2( 1078.92, 439.931 )
 rect_clip_content = false
 focus_mode = 2
@@ -397,11 +412,12 @@ texture_normal = ExtResource( 15 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 16 )
 expand = true
-stretch_mode = 5
+stretch_mode = 4
 _sections_unfolded = [ "Margin", "Mouse", "Textures" ]
 
-[node name="Paused" type="ViewportContainer" parent="." index="22"]
+[node name="Paused" type="ViewportContainer" parent="." index="19"]
 
+editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -416,16 +432,39 @@ size_flags_vertical = 1
 stretch = false
 stretch_shrink = 1
 
-[node name="Quit" type="TextureButton" parent="Paused" index="0"]
+[node name="Title2" type="TextureButton" parent="Paused" index="0"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -137.0
-margin_top = 152.0
-margin_right = 136.0
-margin_bottom = 267.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 667.0
+margin_bottom = 371.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="Quit" type="TextureButton" parent="Paused" index="1"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -151.0
+margin_right = 650.0
+margin_bottom = -20.0
 rect_pivot_offset = Vector2( 1074.92, 318.931 )
 rect_clip_content = false
 focus_mode = 2
@@ -444,16 +483,15 @@ expand = true
 stretch_mode = 5
 _sections_unfolded = [ "Mouse", "Textures" ]
 
-[node name="Resume" type="TextureButton" parent="Paused" index="1"]
+[node name="Resume" type="TextureButton" parent="Paused" index="2"]
 
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -139.0
-margin_top = 20.0
-margin_right = 138.0
-margin_bottom = 140.0
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -264.0
+margin_right = 647.0
+margin_bottom = -140.0
 rect_pivot_offset = Vector2( 1078.92, 439.931 )
 rect_clip_content = false
 focus_mode = 2
@@ -465,29 +503,182 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-texture_normal = ExtResource( 17 )
-texture_pressed = ExtResource( 17 )
-texture_hover = ExtResource( 18 )
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
 expand = true
-stretch_mode = 5
+stretch_mode = 4
 _sections_unfolded = [ "Margin", "Mouse", "Textures" ]
 
-[node name="PoliceSpawn" type="Spatial" parent="." index="23" groups=[
+[node name="Starting" type="ViewportContainer" parent="." index="20"]
+
+pause_mode = 2
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = false
+stretch_shrink = 1
+_sections_unfolded = [ "Pause" ]
+
+[node name="Title" type="TextureButton" parent="Starting" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 667.0
+margin_bottom = 371.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 17 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="Start" type="TextureButton" parent="Starting" index="1"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+margin_top = -165.0
+margin_right = 667.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 20 )
+texture_hover = ExtResource( 21 )
+expand = true
+stretch_mode = 5
+_sections_unfolded = [ "Mouse", "Textures" ]
+
+[node name="PoliceSpawn" type="Spatial" parent="." index="21" groups=[
 "Party",
 ]]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
-script = ExtResource( 19 )
+script = ExtResource( 22 )
+
+[node name="HousePary" parent="." index="22" instance=ExtResource( 23 )]
+
+visible = false
+script = null
+
+[node name="MobileUI" type="ViewportContainer" parent="." index="23"]
+
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -488.0
+margin_top = -329.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = false
+stretch_shrink = 1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Up" type="TouchScreenButton" parent="MobileUI" index="0"]
+
+position = Vector2( 294.39, 135.606 )
+rotation = -1.5708
+normal = ExtResource( 24 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = true
+action = "ui_up"
+visibility_mode = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Down" type="TouchScreenButton" parent="MobileUI" index="1"]
+
+position = Vector2( 376.279, 234.584 )
+rotation = 1.5708
+normal = ExtResource( 24 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_down"
+visibility_mode = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="Right" type="TouchScreenButton" parent="MobileUI" index="2"]
+
+position = Vector2( 383.118, 145.099 )
+normal = ExtResource( 24 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_right"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="MobileUI" index="3"]
+
+position = Vector2( 279.551, 226.496 )
+rotation = 3.14159
+normal = ExtResource( 24 )
+pressed = null
+bitmask = null
+shape = null
+shape_centered = true
+shape_visible = true
+passby_press = false
+action = "ui_left"
+visibility_mode = 1
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Beat" to="Beat" method="beat"]
 
-[connection signal="pressed" from="Busted/Busted_Quit" to="." method="quit"]
+[connection signal="pressed" from="Busted/Quit" to="." method="quit"]
 
-[connection signal="pressed" from="Busted/Busted_Restart" to="." method="restart"]
+[connection signal="pressed" from="Busted/Restart" to="." method="restart"]
 
 [connection signal="pressed" from="Paused/Quit" to="." method="quit"]
 
 [connection signal="pressed" from="Paused/Resume" to="." method="pause"]
+
+[connection signal="pressed" from="Starting/Title" to="." method="start"]
+
+[connection signal="pressed" from="Starting/Start" to="." method="start"]
 
 
 [editable path="Player"]

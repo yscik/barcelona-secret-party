@@ -34,6 +34,9 @@ func update_rot(diff = 0):
 
 	
 func move(): 
+	if Input.is_action_pressed("dev"):
+		return
+		
 	var movement = translation + Vector3(speed, 0, 0).rotated(z, deg2rad(dir * 90))
 	tween_prop("translation", movement)
 

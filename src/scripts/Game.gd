@@ -5,13 +5,19 @@ extends Node
 # var b = "textvar"
 
 func _ready():
+	
 	$Beat.wait_time = Global.bpm
+	
+	$Player.visible = false
+	
+	get_tree().paused = true
+	
 	$Beat.start()
 	#$Bass.play("Bass1", -1, 4.0 / Global.bpm)
 	$Bass/MusicBase.play()
 	
-
-	pass
+	if Global.start:
+		start()
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
@@ -41,5 +47,15 @@ func pause():
 		$Beat.stop()
 	
 func restart():
+	Global.start = true
 	get_tree().reload_current_scene()
+	
 	pass # replace with function body
+
+
+func start():
+	$Starting.visible = false
+	$Player.visible = true
+	get_tree().paused = false
+	
+	
